@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+/* 
+max-w-3xl   → 768px
+max-w-5xl   → 1024px
+max-w-6xl   → 1152px
+max-w-7xl   → 1280px
+max-w-screen-2xl → 1536px
+*/
+
+@theme {
+  --color-content-primary: #ffffff;
+  --color-content-secondary: #c7c9cc;
+  --color-content-tertiary: #d9d9d9;
+  --color-content-brand: #C58DE7;
+  --color-inverse: #030203;
+
+  --color-bg-primary: #020202;
+  --color-bg-secondary: #111012;
+  --color-bg-tertiary: #24222e;
+  --color-bg-brand: #C58DE7;
+  --color-bg-gray: #3d3d3d;
+
+  --color-accent-pink: #d586e0;
+  --color-accent-blue: #91a1fa;
+  --color-accent-green: #77c0af;
+  --color-accent-lime: #d1dc97;
+  --color-accent-ted: #e9a9b3;
+
+  --gradient-border: linear-gradient(90deg, #77C0AF 0%, #D1DC97 14.84%, #E9A9B3 32.15%, #D586E0 65.79%, #91A1FA 84.58%);
+  --gradient-bg: linear-gradient(90deg, #d586e0 0%, #91a1fa 98.93%);
+  --gradient-content: linear-gradient(#c7c9cc 0%, #3d3d3d 100%);
+  --gradient-body: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, .6) 100%);
+
+  --shape-image: url('./public/images/shapes.png');
+}
+
+@layer base {
+  @font-face {
+    font-family: 'Roboto Flex';
+    src: url('./public/fonts/Roboto_Flex/RobotoFlex-VariableFont_GRAD\,XOPQ\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf') format('truetype');
+    font-weight: 100 800;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Roboto Mono';
+    src: url('./public/fonts/Roboto_Mono/RobotoMono-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 800;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Sora';
+    src: url('./public/fonts/Sora/Sora-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 800;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  body {
+    font-family: 'Sora', sans-serif;
+    color: var(--color-content-primary);
+  }
+
+  .container {
+    width: 100%;
+    max-width: theme(maxWidth.7xl);
+    margin-inline: auto;
+  }
+}
+
+@utility bg-shape {
+  background-image: var(--shape-image);
+}
+
+@utility font-sora {
+  font-family: 'Sora', sans-serif;
+}
+
+@utility font-roboto {
+  font-family: 'Roboto Flex', sans-serif;
+}
+
+@utility font-mono {
+  font-family: 'Roboto Mono', monospace;
+}
