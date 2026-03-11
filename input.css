@@ -72,6 +72,41 @@ max-w-screen-2xl → 1536px
   }
 }
 
+@layer components {
+  .input-settings {
+    @apply bg-bg-secondary h-14 w-21.5 rounded-lg px-2 text-center text-3xl;
+  }
+
+  .label-settings {
+    @apply text-content-secondary font-roboto text-base font-bold uppercase;
+  }
+
+  .ns-toggle {
+    @apply flex items-center gap-2 cursor-pointer;
+  }
+
+  .ns-toggle input {
+    @apply sr-only;
+  }
+
+  .ns-slider {
+    @apply relative inline-block h-5 w-8 rounded-full bg-content-tertiary transition-colors duration-200;
+  }
+
+  .ns-slider::after {
+    content: "";
+    @apply absolute top-1/2 left-2.5 aspect-square w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white transition-all duration-200;
+  }
+
+  .ns-toggle input:checked+.ns-slider {
+    @apply bg-linear-to-r from-accent-pink to-accent-blue;
+  }
+
+  .ns-toggle input:checked+.ns-slider::after {
+    left: calc(100% - 10px);
+  }
+}
+
 @utility bg-shape {
   background-image: var(--shape-image);
 }
