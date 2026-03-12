@@ -28,6 +28,7 @@
     --font-weight-extrabold: 800;
     --tracking-normal: 0em;
     --radius-lg: 0.5rem;
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
@@ -35,6 +36,7 @@
     --color-content-primary: #ffffff;
     --color-content-secondary: #c7c9cc;
     --color-content-tertiary: #d9d9d9;
+    --color-content-brand: #C58DE7;
     --color-bg-primary: #020202;
     --color-bg-secondary: #111012;
     --color-bg-tertiary: #24222e;
@@ -42,6 +44,9 @@
     --color-bg-gray: #3d3d3d;
     --color-accent-pink: #d586e0;
     --color-accent-blue: #91a1fa;
+    --color-accent-green: #77c0af;
+    --color-accent-lime: #d1dc97;
+    --color-accent-ted: #e9a9b3;
     --shape-image: url('./public/images/shapes.png');
   }
 }
@@ -194,6 +199,9 @@
   }
 }
 @layer utilities {
+  .relative {
+    position: relative;
+  }
   .container {
     width: 100%;
     @media (width >= 40rem) {
@@ -239,6 +247,9 @@
   .flex {
     display: flex;
   }
+  .hidden {
+    display: none;
+  }
   .inline {
     display: inline;
   }
@@ -271,6 +282,9 @@
   }
   .border-collapse {
     border-collapse: collapse;
+  }
+  .transform {
+    transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
   }
   .cursor-pointer {
     cursor: pointer;
@@ -305,9 +319,6 @@
   }
   .bg-bg-primary {
     background-color: var(--color-bg-primary);
-  }
-  .bg-bg-tertiary {
-    background-color: var(--color-bg-tertiary);
   }
   .bg-linear-to-r {
     --tw-gradient-position: to right;
@@ -368,6 +379,15 @@
     font-size: var(--text-xs);
     line-height: var(--tw-leading, var(--text-xs--line-height));
   }
+  .text-\[20px\] {
+    font-size: 20px;
+  }
+  .text-\[24px\] {
+    font-size: 24px;
+  }
+  .text-\[40px\] {
+    font-size: 40px;
+  }
   .leading-\[130\%\] {
     --tw-leading: 130%;
     line-height: 130%;
@@ -417,6 +437,58 @@
   .outline {
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
+  }
+  .transition {
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .ease-in-out {
+    --tw-ease: var(--ease-in-out);
+    transition-timing-function: var(--ease-in-out);
+  }
+  .outline-none {
+    --tw-outline-style: none;
+    outline-style: none;
+  }
+  .md\:flex {
+    @media (width >= 48rem) {
+      display: flex;
+    }
+  }
+  .md\:hidden {
+    @media (width >= 48rem) {
+      display: none;
+    }
+  }
+  .md\:flex-row {
+    @media (width >= 48rem) {
+      flex-direction: row;
+    }
+  }
+  .md\:text-7xl {
+    @media (width >= 48rem) {
+      font-size: var(--text-7xl);
+      line-height: var(--tw-leading, var(--text-7xl--line-height));
+    }
+  }
+  .lg\:text-7xl {
+    @media (width >= 64rem) {
+      font-size: var(--text-7xl);
+      line-height: var(--tw-leading, var(--text-7xl--line-height));
+    }
+  }
+  .lg\:text-base {
+    @media (width >= 64rem) {
+      font-size: var(--text-base);
+      line-height: var(--tw-leading, var(--text-base--line-height));
+    }
+  }
+  .lg\:text-xl {
+    @media (width >= 64rem) {
+      font-size: var(--text-xl);
+      line-height: var(--tw-leading, var(--text-xl--line-height));
+    }
   }
 }
 @layer base {
@@ -532,6 +604,100 @@
   .ns-toggle input:checked+.ns-slider::after {
     left: calc(100% - 10px);
   }
+  .rgb-btn {
+    position: relative;
+    overflow: visible;
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-tertiary);
+    padding-inline: calc(var(--spacing) * 6);
+    padding-block: calc(var(--spacing) * 3);
+    --tw-font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-white);
+  }
+  .rgb-btn::before, .rgb-input::before, [data-toggle-class].active .rgb-input::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--color-accent-pink), var(--color-accent-blue), var(--color-accent-green), var(--color-accent-lime), var(--color-accent-ted));
+    background-size: 300% 300%;
+    animation: rgb-border 6s linear infinite alternate;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: -1;
+  }
+  .rgb-btn::after, .rgb-input::after, [data-toggle-class].active .rgb-input::after {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    border-radius: inherit;
+    z-index: -1;
+  }
+  .rgb-btn:hover::before, .rgb-input:hover::before, [data-toggle-class].active .rgb-input::before {
+    opacity: 1;
+    transition: opacity 0.3s;
+  }
+  .content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing) * 2);
+  }
+  .icon {
+    transition-property: transform, translate, scale, rotate;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+    --tw-duration: 300ms;
+    transition-duration: 300ms;
+  }
+  .group:hover .icon {
+    animation: float-x 0.8s ease-in-out infinite alternate;
+  }
+}
+@layer utilities {
+  [data-toggle-class] label {
+    transition: color .3s;
+  }
+  [data-toggle-class].active label {
+    color: var(--color-content-brand);
+  }
+}
+@keyframes rgb-border {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+@keyframes float-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(6px);
+  }
+}
+@property --tw-rotate-x {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-rotate-y {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-rotate-z {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-skew-x {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-skew-y {
+  syntax: "*";
+  inherits: false;
 }
 @property --tw-border-style {
   syntax: "*";
@@ -597,6 +763,10 @@
   inherits: false;
   initial-value: solid;
 }
+@property --tw-ease {
+  syntax: "*";
+  inherits: false;
+}
 @property --tw-duration {
   syntax: "*";
   inherits: false;
@@ -619,6 +789,11 @@
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
+      --tw-rotate-x: initial;
+      --tw-rotate-y: initial;
+      --tw-rotate-z: initial;
+      --tw-skew-x: initial;
+      --tw-skew-y: initial;
       --tw-border-style: solid;
       --tw-gradient-position: initial;
       --tw-gradient-from: #0000;
@@ -633,6 +808,7 @@
       --tw-font-weight: initial;
       --tw-tracking: initial;
       --tw-outline-style: solid;
+      --tw-ease: initial;
       --tw-duration: initial;
       --tw-translate-x: 0;
       --tw-translate-y: 0;
