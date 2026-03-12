@@ -105,8 +105,79 @@ max-w-screen-2xl → 1536px
   .ns-toggle input:checked+.ns-slider::after {
     left: calc(100% - 10px);
   }
+
+  .rgb-btn {
+    @apply relative px-6 py-3 rounded-lg text-white font-medium overflow-visible bg-bg-tertiary;
+  }
+
+  /* borda animada */
+  .rgb-btn::before,
+  .rgb-input::before,
+  [data-toggle-class].active .rgb-input::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+
+    background: linear-gradient(90deg,
+        var(--color-accent-pink),
+        var(--color-accent-blue),
+        var(--color-accent-green),
+        var(--color-accent-lime),
+        var(--color-accent-ted));
+
+    background-size: 300% 300%;
+    animation: rgb-border 6s linear infinite alternate;
+    opacity: 0;
+    transition: opacity 0.3s;
+
+    z-index: -1;
+  }
+
+  /* máscara interna */
+  .rgb-btn::after,
+  .rgb-input::after,
+  [data-toggle-class].active .rgb-input::after {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    border-radius: inherit;
+    z-index: -1;
+  }
+
+  .rgb-btn:hover::before,
+  .rgb-input:hover::before,
+  [data-toggle-class].active .rgb-input::before {
+    opacity: 1;
+    transition: opacity 0.3s;
+  }
+
+  .content {
+    @apply flex items-center gap-2 relative;
+  }
+
+  .icon {
+    @apply transition-transform duration-300;
+  }
+
+  /* ícone flutuando */
+  .group:hover .icon {
+    animation: float-x 0.8s ease-in-out infinite alternate;
+  }
+
 }
 
+@layer utilities {
+  [data-toggle-class] label {
+    transition: color .3s;
+  }
+
+  [data-toggle-class].active label {
+    color: var(--color-content-brand);
+  }
+}
+
+/* Utility classes */
 @utility bg-shape {
   background-image: var(--shape-image);
 }
@@ -121,4 +192,24 @@ max-w-screen-2xl → 1536px
 
 @utility font-mono {
   font-family: 'Roboto Mono', monospace;
+}
+
+@keyframes rgb-border {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes float-x {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(6px);
+  }
 }
