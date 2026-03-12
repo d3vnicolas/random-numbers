@@ -12,18 +12,20 @@
       <img class="w-full max-w-43" src="./public/images/logo.png" alt="Logo Numbers" />
     </header>
     <main>
-      <section class="container mx-auto flex max-w-7xl justify-between">
-        <div>
+      <section class="container mx-auto flex max-w-7xl flex-col justify-between gap-4 md:flex-row">
+        <div class="w-full">
           <p
             class="from-content-secondary to-bg-gray font-roboto mb-4 bg-linear-to-r bg-clip-text text-base font-bold text-transparent uppercase"
           >
             Online - gratuito
           </p>
-          <h1 class="font-sora text-7xl leading-[130%] font-extrabold tracking-[-4%] uppercase">
+          <h1
+            class="font-sora text-[40px] leading-[130%] font-extrabold tracking-[-4%] uppercase lg:text-7xl"
+          >
             Sorteador <br />
             de números
           </h1>
-          <div class="flex">
+          <div class="hidden md:flex">
             <ul>
               <li class="mt-6 flex">
                 <img
@@ -60,49 +62,57 @@
             </ul>
           </div>
         </div>
-        <div>
+        <div class="w-full">
           <h6 class="font-roboto mb-2 text-xl font-bold uppercase">Quero Sortear:</h6>
-          <p class="font-roboto text-content-secondary mb-10 text-base font-medium tracking-normal">
+          <p
+            class="font-roboto text-content-secondary mb-10 text-sm font-medium tracking-normal lg:text-base"
+          >
             defina o intervalo e a quantidade de números, clique em "Sortear"<br />
             e veja os resultados na tela. É rápido e fácil!
           </p>
           <form>
             <fieldset class="mb-5 flex gap-4">
-              <div class="flex flex-col items-center gap-2">
+              <div data-toggle-class class="flex flex-col items-center gap-2">
                 <label class="label-settings" for="numbers">Números</label>
-                <input
-                  class="input-settings"
-                  type="text"
-                  id="numbers"
-                  value="2"
-                  maxlength="9"
-                  step="1"
-                  required
-                />
+                <div class="rgb-input relative rounded-lg">
+                  <input
+                    class="input-settings outline-none"
+                    type="text"
+                    id="numbers"
+                    value="2"
+                    maxlength="9"
+                    step="1"
+                    required
+                  />
+                </div>
               </div>
-              <div class="flex flex-col items-center gap-2">
+              <div data-toggle-class class="flex flex-col items-center gap-2">
                 <label class="label-settings" for="numbers">De</label>
-                <input
-                  class="input-settings"
-                  type="text"
-                  id="numbersfrom"
-                  value="1"
-                  maxlength="99"
-                  step="1"
-                  required
-                />
+                <div class="rgb-input relative rounded-lg">
+                  <input
+                    class="input-settings outline-none"
+                    type="text"
+                    id="numbers"
+                    value="1"
+                    maxlength="99"
+                    step="1"
+                    required
+                  />
+                </div>
               </div>
-              <div class="flex flex-col items-center gap-2">
-                <label class="label-settings" for="numbers">De</label>
-                <input
-                  class="input-settings"
-                  type="text"
-                  id="numbersto"
-                  value="100"
-                  maxlength="100"
-                  step="1"
-                  required
-                />
+              <div data-toggle-class class="flex flex-col items-center gap-2">
+                <label class="label-settings" for="numbers">Até</label>
+                <div class="rgb-input relative rounded-lg">
+                  <input
+                    class="input-settings outline-none"
+                    type="text"
+                    id="numbers"
+                    value="100"
+                    maxlength="100"
+                    step="1"
+                    required
+                  />
+                </div>
               </div>
             </fieldset>
             <fieldset class="mb-10">
@@ -116,21 +126,59 @@
             </fieldset>
             <fieldset>
               <button
-                class="bg-bg-tertiary flex h-14 w-full cursor-pointer items-center justify-center gap-2 rounded-lg"
+                class="rgb-btn group flex h-14 w-full cursor-pointer items-center justify-center gap-2"
                 type="submit"
               >
-                Sortear
-                <img
-                  class="aspect-square w-6"
-                  src="./public/images/icons/icon-arrow-right.svg"
-                  alt=""
-                />
+                <span class="content text-content-primary text-base font-bold uppercase">
+                  Sortear
+                  <img
+                    class="icon aspect-square w-6"
+                    src="./public/images/icons/icon-arrow-right.svg"
+                    alt=""
+                  />
+                </span>
               </button>
             </fieldset>
           </form>
+          <div class="flex w-full md:hidden">
+            <ul class="w-full">
+              <li class="mt-6 flex w-full">
+                <img
+                  src="./public/images/icons/icon-chat.svg"
+                  alt="Ícone de mensagem"
+                  class="mr-2 inline h-6 w-6"
+                />
+                <div class="mb-4 flex flex-col">
+                  <h4 class="text-bg-brand font-roboto mb-2 text-sm font-medium">
+                    Como funciona o sorteador de números?
+                  </h4>
+                  <p class="text-content-secondary text-xs">
+                    O sorteador utiliza um algoritmo de geração aleatória para criar números dentro
+                    do intervalo especificado pelo usuário.
+                  </p>
+                </div>
+              </li>
+              <li class="mt-6 flex w-full">
+                <img
+                  src="./public/images/icons/icon-chat.svg"
+                  alt="Ícone de mensagem"
+                  class="mr-2 inline h-6 w-6"
+                />
+                <div class="mb-4 flex flex-col">
+                  <h4 class="text-bg-brand font-roboto mb-2 text-sm font-medium">
+                    Posso escolher o intervalo dos números?
+                  </h4>
+                  <p class="text-content-secondary text-xs">
+                    Sim, você pode definir os valores mínimo e máximo para o intervalo dos números
+                    sorteados.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       </section>
     </main>
-    <script type="module" src="script.js"></script>
+    <script type="module" src="./main.js"></script>
   </body>
 </html>
