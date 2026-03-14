@@ -8,8 +8,12 @@
   </head>
 
   <body class="font-sora bg-bg-primary bg-shape h-screen bg-cover bg-center px-4">
-    <header class="mx-auto mb-24 w-full max-w-7xl pt-16">
-      <img class="w-full max-w-43" src="./public/images/logo.png" alt="Logo Numbers" />
+    <header class="mb-16 w-full max-w-7xl pt-8 md:mb-24 md:pt-16">
+      <img
+        class="mx-auto w-full max-w-43 md:mx-0"
+        src="./public/images/logo.png"
+        alt="Logo Numbers"
+      />
     </header>
     <main>
       <section class="container mx-auto flex max-w-7xl flex-col justify-between gap-4 md:flex-row">
@@ -63,83 +67,118 @@
           </div>
         </div>
         <div class="w-full">
-          <h6 class="font-roboto mb-2 text-xl font-bold uppercase">Quero Sortear:</h6>
-          <p
-            class="font-roboto text-content-secondary mb-10 text-sm font-medium tracking-normal lg:text-base"
+          <!-- <div data-form>
+            <h6 class="font-roboto mb-2 text-xl font-bold uppercase">Quero Sortear:</h6>
+            <p
+              class="font-roboto text-content-secondary mb-10 text-sm font-medium tracking-normal lg:text-base"
+            >
+              defina o intervalo e a quantidade de números, clique em "Sortear"<br />
+              e veja os resultados na tela. É rápido e fácil!
+            </p>
+            <form data-form-drawn>
+              <fieldset class="mb-5 flex gap-4">
+                <div data-toggle-class class="flex flex-col items-center gap-2">
+                  <label class="label-settings" for="numbersqty">Números</label>
+                  <div class="rgb-input relative rounded-lg">
+                    <input
+                      class="input-settings outline-none"
+                      type="text"
+                      id="numbersqty"
+                      value="2"
+                      maxlength="2"
+                      step="1"
+                      required
+                    />
+                  </div>
+                </div>
+                <div data-toggle-class class="flex flex-col items-center gap-2">
+                  <label class="label-settings" for="numbersfrom">De</label>
+                  <div class="rgb-input relative rounded-lg">
+                    <input
+                      class="input-settings outline-none"
+                      type="text"
+                      id="numbersfrom"
+                      value="1"
+                      maxlength="99"
+                      step="1"
+                      required
+                    />
+                  </div>
+                </div>
+                <div data-toggle-class class="flex flex-col items-center gap-2">
+                  <label class="label-settings" for="numbersto">Até</label>
+                  <div class="rgb-input relative rounded-lg">
+                    <input
+                      class="input-settings outline-none"
+                      type="text"
+                      id="numbersto"
+                      value="100"
+                      maxlength="100"
+                      step="1"
+                      required
+                    />
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset class="mb-10">
+                <label class="ns-toggle" for="numbersrepeat">
+                  <input id="numbersrepeat" type="checkbox" class="peer" />
+                  <span class="ns-slider"></span>
+                  <p class="font-roboto text-content-primary inline text-xs font-normal">
+                    Não repetir números
+                  </p>
+                </label>
+              </fieldset>
+              <fieldset>
+                <button
+                  class="rgb-btn group flex h-14 w-full cursor-pointer items-center justify-center gap-2"
+                  type="submit"
+                >
+                  <span class="content text-content-primary text-base font-bold uppercase">
+                    Sortear
+                    <img
+                      class="icon aspect-square w-6"
+                      src="./public/images/icons/icon-arrow-right.svg"
+                      alt=""
+                    />
+                  </span>
+                </button>
+              </fieldset>
+            </form>
+          </div> -->
+          <div
+            data-result
+            class="flex h-full flex-col items-center justify-center"
+            style="display: flex; opacity: 1"
           >
-            defina o intervalo e a quantidade de números, clique em "Sortear"<br />
-            e veja os resultados na tela. É rápido e fácil!
-          </p>
-          <form>
-            <fieldset class="mb-5 flex gap-4">
-              <div data-toggle-class class="flex flex-col items-center gap-2">
-                <label class="label-settings" for="numbers">Números</label>
-                <div class="rgb-input relative rounded-lg">
-                  <input
-                    class="input-settings outline-none"
-                    type="text"
-                    id="numbers"
-                    value="2"
-                    maxlength="9"
-                    step="1"
-                    required
-                  />
-                </div>
-              </div>
-              <div data-toggle-class class="flex flex-col items-center gap-2">
-                <label class="label-settings" for="numbers">De</label>
-                <div class="rgb-input relative rounded-lg">
-                  <input
-                    class="input-settings outline-none"
-                    type="text"
-                    id="numbers"
-                    value="1"
-                    maxlength="99"
-                    step="1"
-                    required
-                  />
-                </div>
-              </div>
-              <div data-toggle-class class="flex flex-col items-center gap-2">
-                <label class="label-settings" for="numbers">Até</label>
-                <div class="rgb-input relative rounded-lg">
-                  <input
-                    class="input-settings outline-none"
-                    type="text"
-                    id="numbers"
-                    value="100"
-                    maxlength="100"
-                    step="1"
-                    required
-                  />
-                </div>
-              </div>
-            </fieldset>
-            <fieldset class="mb-10">
-              <label class="ns-toggle">
-                <input type="checkbox" class="peer" />
-                <span class="ns-slider"></span>
-                <p class="font-roboto text-content-primary inline text-xs font-normal">
-                  Não repetir números
-                </p>
-              </label>
-            </fieldset>
-            <fieldset>
-              <button
-                class="rgb-btn group flex h-14 w-full cursor-pointer items-center justify-center gap-2"
-                type="submit"
-              >
-                <span class="content text-content-primary text-base font-bold uppercase">
-                  Sortear
+            <h4 class="text-content-primary font-roboto mb-3 text-xl font-bold uppercase">
+              Resultado do sorteio
+            </h4>
+            <p class="text-content-secondary mb-10 font-mono text-base font-bold uppercase">
+              1° Resultado
+            </p>
+            <div data-show-numbers class="mb-10"></div>
+            <button
+              class="rgb-btn spin-btn hidden h-14 w-full cursor-pointer items-center justify-center gap-2"
+              type="button"
+            >
+              <span class="content text-content-primary text-base font-bold uppercase">
+                Sortear novamente
+                <div class="relative aspect-square w-6">
                   <img
-                    class="icon aspect-square w-6"
-                    src="./public/images/icons/icon-arrow-right.svg"
-                    alt=""
+                    class="absolute top-1/2 left-1/2 -translate-1/2"
+                    src="./public/images/icons/icon-play.svg"
+                    alt="Ícone play"
                   />
-                </span>
-              </button>
-            </fieldset>
-          </form>
+                  <img
+                    class="icon-spin absolute top-1/2 left-1/2 -translate-1/2"
+                    src="./public/images/icons/icon-reload.svg"
+                    alt="Ícone reload"
+                  />
+                </div>
+              </span>
+            </button>
+          </div>
           <div class="flex w-full md:hidden">
             <ul class="w-full">
               <li class="mt-6 flex w-full">

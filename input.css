@@ -160,9 +160,17 @@ max-w-screen-2xl → 1536px
     @apply transition-transform duration-300;
   }
 
+  .icon-spin {
+    @apply transition-transform duration-300
+  }
+
   /* ícone flutuando */
   .group:hover .icon {
     animation: float-x 0.8s ease-in-out infinite alternate;
+  }
+
+  .spin-btn:hover .icon-spin {
+    animation: rotate 1s linear infinite;
   }
 
 }
@@ -211,5 +219,15 @@ max-w-screen-2xl → 1536px
 
   to {
     transform: translateX(6px);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
   }
 }
