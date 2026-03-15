@@ -153,7 +153,7 @@ max-w-screen-2xl → 1536px
   }
 
   .content {
-    @apply flex items-center gap-2 relative;
+    @apply flex justify-center items-center gap-2 relative;
   }
 
   .icon {
@@ -173,6 +173,17 @@ max-w-screen-2xl → 1536px
     animation: rotate 1s linear infinite;
   }
 
+  .number {
+    @apply w-25 h-25 relative overflow-visible invisible opacity-0 flex items-center justify-center
+  }
+
+  .number i {
+    @apply block absolute rounded-[28px] inset-0 bg-content-brand -z-1
+  }
+
+  .number span {
+    @apply font-mono font-bold text-5xl text-inverse
+  }
 }
 
 @layer utilities {

@@ -5,3 +5,9 @@ export function onlyNumbersInput(inputs) {
     })
   })
 }
+
+export function limitNumb(input, limit = 6) {
+  input.oninput = () => {
+    parseInt(input.value) > limit ? (input.value = limit) : false
+  }
+}

@@ -1,31 +1,3 @@
-// function drawnNumbers(qty, from, to, allowRepeats = true) {
-//   const numbers = []
-
-//   if (!allowRepeats && qty > to - from + 1) {
-//     throw new Error("Impossible to draw without repetition in this interval")
-//   }
-
-//   for (let i = 0; i < qty; i++) {
-//     let drawn = randomInt(from, to)
-
-//     if (!allowRepeats) {
-//       while (numbers.includes(drawn)) {
-//         drawn = randomInt(from, to)
-//       }
-//     }
-
-//     numbers.push(drawn)
-//   }
-
-//   return numbers
-// }
-
-// function randomInt(from, to) {
-//   return Math.floor(Math.random() * (to - from + 1)) + from
-// }
-
-// export default drawnNumbers
-
 /**
  *
  * @param {number} qty number of numbers that will be drawn
@@ -59,6 +31,26 @@ function drawnNumbers(qty, from, to, allowRepeats = true) {
  */
 function randomInt(from, to) {
   return Math.floor(Math.random() * (to - from + 1)) + from
+}
+
+/**
+ *
+ * @param {number[]} numbers
+ * @param {node} container
+ */
+export function insertNumbersOnDom(numbers, container) {
+  container.innerHTML = ""
+
+  numbers.forEach((num) => {
+    let numbContainer = document.createElement("div")
+    let backPurple = document.createElement("i")
+    let numbElement = document.createElement("span")
+    numbContainer.classList.add("number")
+    numbElement.innerText = num
+    numbContainer.appendChild(backPurple)
+    numbContainer.appendChild(numbElement)
+    container.appendChild(numbContainer)
+  })
 }
 
 export default drawnNumbers
